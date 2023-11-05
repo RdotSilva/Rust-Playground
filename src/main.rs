@@ -2,6 +2,10 @@ fn add_five(num: u32) -> u32 {
     num + 5
 }
 
+fn sum_array(arr: &[i32]) -> i32 {
+    arr.iter().sum()
+}
+
 // Everything is defaulted to immutable
 fn main() {
     let mut x: u32 = 50;
