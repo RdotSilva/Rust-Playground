@@ -1,6 +1,8 @@
 mod my_functs;
+mod other_functs;
 
 use crate::my_functs::add_five;
+use crate::other_functs::minus_functs::subtract_10;
 
 // Impport all
 // use crate::my_functs::*;
@@ -16,6 +18,9 @@ fn main() {
 
     let y: u32 = add_five(x);
     println!("y is {}", y);
+
+    let z: u32 = subtract_10(x);
+    println!("z is {}", z);
 
     x = 70;
     println!("x is {}", x)
