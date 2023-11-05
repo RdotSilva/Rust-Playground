@@ -1,13 +1,16 @@
-fn add_five(num: u32) -> u32 {
-    num + 5
-}
+mod my_functs;
 
-fn sum_array(arr: &[i32]) -> i32 {
-    arr.iter().sum()
-}
+use crate::my_functs::add_five;
 
-// Everything is defaulted to immutable
+// Impport all
+// use crate::my_functs::*;
+
+// Import several
+// use crate::my_functs::{add_five, subtract_10};
+
 fn main() {
+    // Everything is defaulted to immutable
+    // Use mut to make data mutable
     let mut x: u32 = 50;
     println!("x is {}", x);
 
