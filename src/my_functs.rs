@@ -1,6 +1,22 @@
+/// Function: add_five
+///
+/// # Arguments (num: u32)
+///
+/// # Returns u32
+///
+/// # Example
+/// ````
+/// let x = 5;
+/// let y = add_five(x);
+/// ````
 pub fn add_five(num: u32) -> u32 {
     num + 5
 }
+
+/**
+ * This is a multi-line
+ *  block comment
+ */
 
 // pub allows us to import the function in other areas
 pub fn sum_array(arr: &[i32]) -> i32 {
