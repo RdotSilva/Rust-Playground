@@ -19,6 +19,8 @@ pub fn add_five(num: u32) -> u32 {
  */
 
 // pub allows us to import the function in other areas
+// Override to allow dead code and unused variables
+#[allow(dead_code, unused_variables)]
 pub fn sum_array(arr: &[i32]) -> i32 {
     arr.iter().sum()
 }
