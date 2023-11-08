@@ -82,3 +82,50 @@ Rust has several data types divided into different categories. Below is a table 
 Note: The 'Copy Trait' column specifies whether the data type implements the `Copy` trait by default. Some types, like structs, tuples, and arrays, may implement `Copy` conditionally, depending on whether their elements do.
 
 Memory allocation for compound types such as structs and enums can be more complex depending on their definition and use case. Typically, they are placed on the stack, but if they include a type that requires heap allocation, like `String` or `Box<T>`, the data they own may be stored on the heap while the data structure itself is on the stack.
+
+## Memory in Rust: Stack vs Heap
+
+Understanding how Rust manages memory is crucial for writing efficient and safe code. Here's a quick cheat sheet on the differences between stack and heap memory in Rust:
+
+### Stack
+
+- **Allocation**: Automatic, handled at compile time.
+- **Deallocation**: Automatic, occurs when the variable goes out of scope.
+- **Access Speed**: Fast access due to fixed size and LIFO (last in, first out) order.
+- **Size Limitation**: Limited to a fixed size; can lead to stack overflow if the limit is exceeded.
+- **Use Cases**: Used for static memory allocation, which includes most primitives, fixed-size arrays, and structs that don’t contain `Box`, `Vec`, `String`, or other heap-based data types.
+- **Lifespan**: Variables on the stack must have a known, fixed size at compile time.
+
+\```rust
+fn use_stack_memory() {
+let x = 10; // stored on the stack
+let y = "static string"; // stored on the stack
+// 'x' and 'y' are popped off the stack when this function returns
+}
+\```
+
+### Heap
+
+- **Allocation**: Dynamic, managed at runtime.
+- **Deallocation**: Manual or via Rust's ownership system, which uses RAII (Resource Acquisition Is Initialization) pattern.
+- **Access Speed**: Slower than stack, due to dynamic memory management overhead.
+- **Size Limitation**: Limited by the system’s available memory; more flexible, suitable for large or resizable data.
+- **Use Cases**: Used for dynamic memory allocation, such as when the size of data is not known at compile time or when owning data needs to be shared or live longer than the scope it was created in.
+- **Lifespan**: The heap allows for allocating memory that can live beyond the scope it was created in, transferring ownership as needed.
+
+\```rust
+fn use_heap_memory() {
+let vec = Box::new(10); // Heap allocation
+// 'vec' is deallocated when it goes out of scope, unless ownership is transferred
+}
+\```
+
+### Comparing Stack and Heap
+
+- **Performance**: Stack allocation/deallocation is faster than heap allocation/deallocation.
+- **Flexibility**: Heap is more flexible, allowing for dynamic resizing and lifetime decoupling.
+- **Memory Safety**: Rust enforces memory safety through its ownership rules, ensuring no dangling pointers, double frees, or memory leaks.
+- **Variable Size**: Stack variables must have a fixed size, whereas heap variables can have dynamic size.
+- **Scope**: Stack variables are tied to the scope they are defined in, whereas heap variables can be moved across scopes and threads.
+
+Rust’s memory safety guarantees and performance benefits are largely due to its use of stack allocation wherever possible, and its careful management of heap-allocated data. It makes trade-offs between the stack and heap to optimize for both safety and speed.
