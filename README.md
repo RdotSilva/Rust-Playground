@@ -39,3 +39,46 @@ let octal = 0o77; // Octal
 let binary = 0b1111_0000; // Binary
 let byte = b'A'; // Byte (u8 only)
 ```
+
+## Data Type Cheat Sheet
+
+Rust has several data types divided into different categories. Below is a table covering most of them:
+
+| Category       | Data Type | Description                                               | Copy Trait  | Memory Allocation    |
+| -------------- | --------- | --------------------------------------------------------- | ----------- | -------------------- |
+| Integer        | i8        | 8-bit signed integer                                      | Yes         | Stack                |
+| Integer        | i16       | 16-bit signed integer                                     | Yes         | Stack                |
+| Integer        | i32       | 32-bit signed integer                                     | Yes         | Stack                |
+| Integer        | i64       | 64-bit signed integer                                     | Yes         | Stack                |
+| Integer        | i128      | 128-bit signed integer                                    | Yes         | Stack                |
+| Integer        | isize     | Pointer-sized signed integer                              | Yes         | Stack                |
+| Integer        | u8        | 8-bit unsigned integer                                    | Yes         | Stack                |
+| Integer        | u16       | 16-bit unsigned integer                                   | Yes         | Stack                |
+| Integer        | u32       | 32-bit unsigned integer                                   | Yes         | Stack                |
+| Integer        | u64       | 64-bit unsigned integer                                   | Yes         | Stack                |
+| Integer        | u128      | 128-bit unsigned integer                                  | Yes         | Stack                |
+| Integer        | usize     | Pointer-sized unsigned integer                            | Yes         | Stack                |
+| Floating-Point | f32       | 32-bit floating-point number                              | Yes         | Stack                |
+| Floating-Point | f64       | 64-bit floating-point number                              | Yes         | Stack                |
+| Boolean        | bool      | Boolean type (true or false)                              | Yes         | Stack                |
+| Character      | char      | Single Unicode scalar value                               | Yes         | Stack                |
+| Compound       | tuples    | Fixed-size collection of values, possibly different types | Conditional | Stack                |
+| Compound       | arrays    | Fixed-size same-type collection of values                 | Conditional | Stack                |
+| Textual        | &str      | String slice (view into a string)                         | No          | Stack (pointer data) |
+| Textual        | String    | Grow-able UTF-8 string                                    | No          | Heap                 |
+| Structs        | struct    | Custom data types                                         | Conditional | Stack or Heap        |
+| Enums          | enum      | Type with a fixed set of variants                         | Conditional | Stack or Heap        |
+| Pointer        | &T        | Reference pointer to type T                               | No          | Stack                |
+| Pointer        | &mut T    | Mutable reference pointer to type T                       | No          | Stack                |
+| Pointer        | Box<T>    | Heap-allocated type T                                     | No          | Heap                 |
+| Function       | fn        | Function pointers                                         | Yes         | Stack                |
+| Slice          | [T]       | Dynamically-sized view into a contiguous sequence, T      | No          | Stack (pointer data) |
+| Trait Object   | dyn Trait | Dynamically dispatched trait object                       | No          | Heap (generally)     |
+| Raw Pointer    | \*const T | Immutable raw pointer (unsafe)                            | Yes         | Stack                |
+| Raw Pointer    | \*mut T   | Mutable raw pointer (unsafe)                              | Yes         | Stack                |
+| Fixed-size     | array     | Fixed-size list of elements of the same type              | Conditional | Stack                |
+| Variable-size  | vector    | Dynamically-sized, heap-allocated data structure          | No          | Heap                 |
+
+Note: The 'Copy Trait' column specifies whether the data type implements the `Copy` trait by default. Some types, like structs, tuples, and arrays, may implement `Copy` conditionally, depending on whether their elements do.
+
+Memory allocation for compound types such as structs and enums can be more complex depending on their definition and use case. Typically, they are placed on the stack, but if they include a type that requires heap allocation, like `String` or `Box<T>`, the data they own may be stored on the heap while the data structure itself is on the stack.
