@@ -38,5 +38,19 @@ fn main() {
     arr.push(10);
     println!("vec is {:?}", arr);
 
+    // A reference on the Stack pointing to a value
+    let arr_2 = &arr[0..3];
+    println!("arr_2 {:?}", arr_2);
+
+    // Heap
+    let mut s: String = String::from("Test String");
+    s.push(' ');
+    s.push('!');
+    println!("s is {:?}", s);
+
+    // A reference on the Stack pointing to a value on the Heap
+    let s_2 = &s[0..5];
+    println!("s_2 is {:?}", s_2);
+
     println!("MY_INTEGER is {:?}", MY_INTEGER);
 }
