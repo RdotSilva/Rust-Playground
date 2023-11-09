@@ -28,6 +28,9 @@
 
 // Stack vs Heap
 const MY_INTEGER: u8 = 10;
+
+const MSG_CONST: &str = "Hello World Constant";
+
 fn main() {
     // Stack
     let x: u8 = 50;
@@ -53,4 +56,19 @@ fn main() {
     println!("s_2 is {:?}", s_2);
 
     println!("MY_INTEGER is {:?}", MY_INTEGER);
+
+    // Heap dynamic in size
+    let st: String = String::from("Hello World");
+    let st_2: &str = &st[0..5];
+    println!("{}", st_2);
+
+    // Stack and a reference to a string literal (that is stored statically)
+    let msg: &str = "Hello World 2";
+    println!("{}", msg);
+
+    // Heap dynamic in size
+    let msg_string: String = "Hello World 3".to_string();
+    println!("{}", msg_string);
+
+    println!("{}", MSG_CONST);
 }
