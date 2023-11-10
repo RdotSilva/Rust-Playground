@@ -71,4 +71,32 @@ fn main() {
     println!("{}", msg_string);
 
     println!("{}", MSG_CONST);
+
+    // Borrowing and ownership examples
+    // Immutable References
+
+    // This will work
+    let x: i32 = 50;
+    let y: i32 = x;
+
+    println!("{}", x);
+    println!("{}", y);
+
+    // This will not work
+    // let s: String = String::from("Hello World");
+    // let t: String = s;
+    // println!("{}", t);
+
+    // This will Work
+    let s: String = String::from("Hello World");
+    let t: String = s.clone();
+    println!("{}", t);
+
+    // This will Work
+    // This is just a reference to a string now
+    let s: String = String::from("Hello World 2");
+    let t: &String = &s;
+    let u: &String = &s;
+    let v: &String = &s;
+    println!("{}", t);
 }
