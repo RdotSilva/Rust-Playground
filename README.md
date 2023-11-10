@@ -129,3 +129,79 @@ let vec = Box::new(10); // Heap allocation
 - **Scope**: Stack variables are tied to the scope they are defined in, whereas heap variables can be moved across scopes and threads.
 
 Rust’s memory safety guarantees and performance benefits are largely due to its use of stack allocation wherever possible, and its careful management of heap-allocated data. It makes trade-offs between the stack and heap to optimize for both safety and speed.
+
+# Ownership and Borrowing
+
+Rust's ownership system is a set of rules that manages how the Rust compiler allocates and deallocates memory. It also ensures memory safety and concurrency safety. Here's how ownership and borrowing work in Rust, along with some examples:
+
+## Ownership
+In Rust, all values have a single owner. The ownership rules are as follows:
+- Each value in Rust has a variable that's called its owner.
+- There can only be one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
+
+Here's an example of ownership:
+
+```rust
+fn main() {
+    let s1 = String::from("hello"); // s1 owns the string "hello"
+    let s2 = s1; // s1 is moved into s2, s1 is no longer valid here
+    println!("{}, world!", s2); // This works fine as s2 is the owner of the string
+    // println!("{}, world!", s1); // This would fail as s1's value has been moved to s2
+}
+```
+
+## Borrowing
+Borrowing refers to passing references to a value without transferring ownership. There are two types of borrowing:
+- **Immutable References**: Allows you to read data without changing it.
+- **Mutable References**: Allows you to not only read but also modify data.
+
+### Immutable References
+You can create an immutable reference using the `&` syntax. It allows you to read data without taking ownership:
+
+```rust
+fn main() {
+    let s = String::from("hello");
+    let len = calculate_length(&s);
+    println!("The length of '{}' is {}.", s, len);
+}
+
+fn calculate_length(s: &String) -> usize { // s is a reference to a String
+    s.len()
+} // Here, s goes out of scope. But because it does not have ownership of what it refers to, nothing happens.
+```
+
+### Mutable References
+You can create a mutable reference using the `&mut` syntax, which allows you to change the data the reference points to:
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+    change(&mut s);
+    println!("Changed string: {}", s);
+}
+
+fn change(s: &mut String) {
+    s.push_str(", world");
+}
+```
+
+Note that you can have only one mutable reference to a particular piece of data in a particular scope. This restriction allows for mutation but in a very controlled fashion.
+
+## Dereferencing
+Dereferencing uses the `*` operator to access the value pointed to by a reference:
+
+```rust
+fn main() {
+    let mut x = 5;
+    {
+        let y = &mut x; // y is a mutable reference to x
+        *y += 1; // Dereference y to change the value of x
+    }
+    println!("x is now: {}", x);
+}
+```
+
+This code shows how to modify `x` by using a mutable reference `y`. The line `*y += 1` changes the value that `y` points to, hence `x` is changed. When `y` goes out of scope, we can use `x` again, which now has the new value.
+
+By understanding and using ownership and borrowing correctly, you can write safe and efficient Rust programs without needing a garbage collector.
