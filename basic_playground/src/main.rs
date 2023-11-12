@@ -77,4 +77,23 @@ fn main() {
     let removed_char: char = chars.pop().unwrap();
     println!("removed_char is {:?}", removed_char);
     println!("chars is {:?}", chars);
+
+    // Iterate through the chars vector
+    chars.iter().for_each(|c| print!("{}", c));
+
+    // Another way of creating a char vector
+    let chars_again: Vec<char> = vec!['h', 'e', 'l', 'l', 'o'];
+    dbg!(&chars_again);
+
+    // Iterate over the chars, collect items and return a string
+    let collected: String = chars_again.iter().collect();
+    dbg!(collected);
+
+    // Traditional for loop
+    for c in chars_again {
+        print!("{}", c);
+        if c == 'o' {
+            println!(", world!");
+        }
+    }
 }
