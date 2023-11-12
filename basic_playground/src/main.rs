@@ -48,4 +48,33 @@ fn main() {
     // Map over an array
     let my_floats_new: [f32; 10] = my_floats.map(|n| n + 2.0);
     println!("my_floats_new is {:?}", my_floats_new);
+
+    // String literal stored on Stack
+    let name: &str = "Ryan";
+    println!("name is {:?}", name);
+
+    // Dynamic string
+    let dynamic_name: String = String::from("Ryan");
+    println!("dynamic_name is {:?}", dynamic_name);
+    println!("my dynamic_name stored in memory {:p}", &dynamic_name);
+
+    // Reference to a string
+    let str_slice: &str = &dynamic_name[0..5];
+    println!("str_slice is {:?}", str_slice);
+
+    // Vector of characters (basically a string)
+    let mut chars: Vec<char> = Vec::new();
+    chars.insert(0, 'h');
+    chars.insert(1, 'e');
+    chars.insert(2, 'l');
+    chars.push('l');
+    chars.push('o');
+    chars.push('.');
+    println!("chars is {:?}", chars);
+    dbg!(&chars); // Debug statement uses a reference
+
+    // Returns an enum but we can use unwrap
+    let removed_char: char = chars.pop().unwrap();
+    println!("removed_char is {:?}", removed_char);
+    println!("chars is {:?}", chars);
 }
