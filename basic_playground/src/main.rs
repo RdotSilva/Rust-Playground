@@ -96,4 +96,10 @@ fn main() {
             println!(", world!");
         }
     }
+
+    // Closures
+    let num: i32 = 5;
+    let add_num = |x: i32| x + num;
+    let new_num: i32 = add_num(7);
+    dbg!(new_num);
 }
