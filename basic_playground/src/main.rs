@@ -54,7 +54,7 @@ fn main() {
     println!("name is {:?}", name);
 
     // Dynamic string
-    let dynamic_name: String = String::from("Ryan");
+    let dynamic_name: String = String::from("RyanS");
     println!("dynamic_name is {:?}", dynamic_name);
     println!("my dynamic_name stored in memory {:p}", &dynamic_name);
 
