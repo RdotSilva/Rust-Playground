@@ -1,3 +1,5 @@
+mod m1_enums;
+
 const OUR_COURSE: &str = "Rust Playground";
 
 fn main() {
