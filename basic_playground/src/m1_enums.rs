@@ -52,6 +52,16 @@ fn remainder_zero(num_check: f32) -> GivenOption<f32> {
     }
 }
 
+// Built in Rust Option type
+fn remainder_zero_built_in(num_check: f32) -> Option<f32> {
+    let remainder: f32 = num_check % 10.0;
+    if remainder != 0.0 {
+        Some(remainder)
+    } else {
+        None
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -75,5 +85,8 @@ mod test {
 
         let remainder: GivenOption<f32> = remainder_zero(12.2);
         dbg!(remainder);
+
+        let remainder_built_in: Option<f32> = remainder_zero_built_in(12.2);
+        dbg!(remainder_built_in);
     }
 }
