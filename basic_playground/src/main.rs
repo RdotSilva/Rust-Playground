@@ -1,4 +1,5 @@
 mod m1_enums;
+mod m2_structs;
 
 const OUR_COURSE: &str = "Rust Playground";
 
