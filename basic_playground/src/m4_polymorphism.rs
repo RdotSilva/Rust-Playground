@@ -17,7 +17,20 @@ mod test {
         }
     }
 
-   
+    impl EthereumAddress for Address {
+        fn convert_address(&self) -> Result<Address, &'static str> {
+            Ok(*self)
+        }
+    }
+
+    fn get_ethereum_data<T: EthereumAddress>(address: T) -> Address {
+        let converted_address: Address = address.convert_address().unwrap();
+
+        // do something else...
+
+        converted_address
+    }
+
     #[test]
    
 }
