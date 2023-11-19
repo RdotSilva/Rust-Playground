@@ -32,5 +32,20 @@ mod test {
     }
 
     #[test]
-   
+    fn tests_poly() {
+        let addr: Address =
+            Address::from_str("0x388C818CA8B9251b393131C08a736A67ccB19297").unwrap();
+
+        let new_addr: Address = get_ethereum_data(addr);
+        assert_eq!(
+            new_addr,
+            Address::from_str("0x388C818CA8B9251b393131C08a736A67ccB19297").unwrap()
+        );
+
+        let new_addr: Address = get_ethereum_data("0x388C818CA8B9251b393131C08a736A67ccB19297");
+        assert_eq!(
+            new_addr,
+            Address::from_str("0x388C818CA8B9251b393131C08a736A67ccB19297").unwrap()
+        );
+    }
 }
