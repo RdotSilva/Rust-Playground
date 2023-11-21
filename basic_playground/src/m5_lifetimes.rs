@@ -32,3 +32,35 @@ fn example_1() {
         }
     }
 }
+
+#[allow(dead_code, unused_variables)]
+fn example_2() {
+    // Allocate space in memory
+    let highest_age: &i32;
+    let new_value: i32;
+
+    // Initialize vars
+    let alice_age: i32 = 20; // 'a
+
+    {
+        let bob_age: i32 = 21; // 'b
+
+        // Call function
+        highest_age = largest(&alice_age, &bob_age);
+
+        // Create a new value with a dereferenced value
+        new_value = *highest_age;
+    } // 'b out of scope
+
+    // Print output
+    println!("New value age is {}", new_value);
+
+    // This example uses a lifetime of 'a
+    fn largest<'a>(compare_1: &'a i32, compare_2: &'a i32) -> &'a i32 {
+        if compare_1 > compare_2 {
+            compare_1
+        } else {
+            compare_2
+        }
+    }
+}
