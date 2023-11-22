@@ -94,3 +94,9 @@ fn example_3_generics() {
         }
     }
 }
+
+#[allow(dead_code, unused_variables)]
+struct Person<'p, 'q> {
+    name: &'p str,
+    points: &'q f32,
+}
