@@ -100,3 +100,38 @@ struct Person<'p, 'q> {
     name: &'p str,
     points: &'q f32,
 }
+
+#[allow(dead_code, unused_variables)]
+fn example_4_with_struct() {
+    // Allocate space in memory
+    let highest_age: &f32;
+    let new_value: f32;
+
+    // Initialize vars
+    let alice: Person = Person {
+        name: "alice",
+        points: &50.2,
+    };
+
+    {
+        let bob: Person = Person {
+            name: "bob",
+            points: &40.5,
+        };
+
+        // Call function
+        highest_age = largest::<f32>(alice.points, bob.points);
+        new_value = *highest_age;
+    } // 'b out of scope
+
+    // Print output
+    println!("New value age is {}", new_value);
+
+    fn largest<'a, 'b: 'a, T: PartialOrd>(compare_1: &'a T, compare_2: &'b T) -> &'a T {
+        if compare_1 > compare_2 {
+            compare_1
+        } else {
+            compare_2
+        }
+    }
+}
