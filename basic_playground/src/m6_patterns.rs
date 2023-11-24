@@ -36,4 +36,25 @@ mod test {
         // println!("{:?}", some_num);
         // println!("{}", res);
     }
+
+    #[test]
+    fn tests_match_result() {
+        let some_res: Result<i32, &str> = Ok(50);
+        let _some_err: Result<i32, &str> = Err("There was a problem");
+
+        let res = match some_res {
+            Ok(val) => val,
+            Err(e) => panic!("{}", e),
+        };
+
+        println!("{}", res);
+
+        let my_int: i32 = if let Ok(r) = some_res {
+            r
+        } else {
+            panic!("There was a problem");
+        };
+
+        println!("{}", my_int);
+    }
 }
