@@ -57,4 +57,15 @@ mod test {
 
         println!("{}", my_int);
     }
+
+    #[test]
+    fn tests_match_guard() {
+        let pair: (i32, i32) = (2, -2);
+        match pair {
+            (x, y) if x == y => println!("They match!"),
+            (x, y) if x + y == 0 => println!("They neutralize"),
+            (_, y) if y == 2 => println!("Y is indeed +2"),
+            _ => println!("We are no bothered"),
+        };
+    }
 }
