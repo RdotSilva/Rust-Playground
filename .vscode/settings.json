@@ -1,0 +1,6 @@
+{
+  "rust-analyzer.linkedProjects": [
+    ".\\basic_playground\\Cargo.toml",
+    ".\\basic_playground\\Cargo.toml"
+  ]
+}
