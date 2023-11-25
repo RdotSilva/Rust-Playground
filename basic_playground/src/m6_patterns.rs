@@ -3,12 +3,37 @@ mod test {
 
     #[derive(Debug)]
     enum Message {
-      Quit,
-      ChangeColour(i32, i32, i32),
-      Move { x: i32, y: i32 },
-      Write(String)
+        Quit,
+        ChangeColour(i32, i32, i32),
+        Move { x: i32, y: i32 },
+        Write(String),
     }
-    
+
+    fn process_message(msg: Message) {
+        match msg {
+            Message::Quit => {
+                println!("I quit!");
+            }
+            Message::ChangeColour(red, green, blue) => {
+                println!("Red {}, Green {}, Blue {}", red, green, blue);
+            }
+            Message::Move { x, y: new_name } => {
+                println!("X is {}, Y as new_name is {}", x, new_name);
+            }
+            Message::Write(text) => {
+                println!("{}", text);
+            }
+        };
+    }
+
+    #[test]
+    fn tests_large_enum() {
+        let _my_quit: Message = Message::Quit;
+        let _my_colour: Message = Message::ChangeColour(10, 20, 255);
+        let _my_move: Message = Message::Move { x: 10, y: 200 };
+        let my_write: Message = Message::Write("My awesome string".to_string());
+        process_message(my_write);
+    }
 
     #[test]
     fn tests_match_literals() {
