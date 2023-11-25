@@ -1,6 +1,15 @@
 #[cfg(test)]
 mod test {
 
+    #[derive(Debug)]
+    enum Message {
+      Quit,
+      ChangeColour(i32, i32, i32),
+      Move { x: i32, y: i32 },
+      Write(String)
+    }
+    
+
     #[test]
     fn tests_match_literals() {
         let number: i32 = 20;
