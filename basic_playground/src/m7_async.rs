@@ -16,5 +16,16 @@ mod tests {
     }
 
     #[tokio::test]
-
+    async fn tests_calls_async_fn() {
+        let api_url: &str = "https://cat-fact.herokuapp.com/facts/";
+        let my_res: Result<serde_json::Value, std::io::Error> = my_async_call(api_url).await;
+        match my_res {
+            Ok(r) => {
+                dbg!(r);
+            }
+            Err(_) => {
+                panic!("Failed to make request!");
+            }
+        };
+    }
 }
