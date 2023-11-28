@@ -1,5 +1,18 @@
 # Rust Playground
 
+## Basic Playground
+
+Located in the `basic_playground/src` folder. Each section is separated into it's own file:
+
+1. Enums
+2. Structs
+3. Traits
+4. Polymorphism
+5. Lifetimes
+6. Patterns
+7. Async calls
+8. Collections
+
 ## Rust Integer Types
 
 Rust provides a variety of integer types with different sizes and signedness. Here is a list of all the integer types, their byte size, and their minimum and maximum values:
@@ -135,7 +148,9 @@ Rust’s memory safety guarantees and performance benefits are largely due to it
 Rust's ownership system is a set of rules that manages how the Rust compiler allocates and deallocates memory. It also ensures memory safety and concurrency safety. Here's how ownership and borrowing work in Rust, along with some examples:
 
 ## Ownership
+
 In Rust, all values have a single owner. The ownership rules are as follows:
+
 - Each value in Rust has a variable that's called its owner.
 - There can only be one owner at a time.
 - When the owner goes out of scope, the value will be dropped.
@@ -152,11 +167,14 @@ fn main() {
 ```
 
 ## Borrowing
+
 Borrowing refers to passing references to a value without transferring ownership. There are two types of borrowing:
+
 - **Immutable References**: Allows you to read data without changing it.
 - **Mutable References**: Allows you to not only read but also modify data.
 
 ### Immutable References
+
 You can create an immutable reference using the `&` syntax. It allows you to read data without taking ownership:
 
 ```rust
@@ -172,6 +190,7 @@ fn calculate_length(s: &String) -> usize { // s is a reference to a String
 ```
 
 ### Mutable References
+
 You can create a mutable reference using the `&mut` syntax, which allows you to change the data the reference points to:
 
 ```rust
@@ -189,6 +208,7 @@ fn change(s: &mut String) {
 Note that you can have only one mutable reference to a particular piece of data in a particular scope. This restriction allows for mutation but in a very controlled fashion.
 
 ## Dereferencing
+
 Dereferencing uses the `*` operator to access the value pointed to by a reference:
 
 ```rust
