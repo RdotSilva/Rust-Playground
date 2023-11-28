@@ -22,4 +22,16 @@ mod test {
             dbg!("Alice is present!");
         }
     }
+
+    #[test]
+    fn tests_hashset() {
+        let mut names_hs: HashSet<&str> = HashSet::new();
+        names_hs.insert("alice");
+        names_hs.insert("bob");
+        names_hs.insert("jane");
+
+        if names_hs.contains("bob") {
+            dbg!("Bob is here!");
+        }
+    }
 }
