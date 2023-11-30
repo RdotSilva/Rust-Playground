@@ -34,12 +34,22 @@
 #[cfg(test)]
 mod tests {
 
+    macro_rules! mad_skills {
+        ($x: expr) => {
+            format!("You sent an expression: {}", $x)
+        };
+    }
+
     #[test]
     fn tests_declarative_macro() {
         let mut _x: Vec<i32> = vec![];
         dbg!(_x);
 
         let formatted: String = format!("Hello with vec {:?}", _x);
+
+        let some_var: String = mad_skills!(1 + 2);
+
+        dbg!(some_var);
 
         dbg!(formatted);
     }
