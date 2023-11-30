@@ -35,8 +35,14 @@
 mod tests {
 
     macro_rules! mad_skills {
-        ($x: expr) => {
-            format!("You sent an expression: {}", $x)
+        // ($x: expr) => {
+        //   format!("You sent an expression: {}", $x)
+        // };
+        ($x: ty) => {
+            match stringify!($x) {
+                "i32" => "You sent an i32 type".to_string(),
+                _ => "You sent something else".to_string(),
+            }
         };
     }
 
@@ -47,7 +53,7 @@ mod tests {
 
         let formatted: String = format!("Hello with vec {:?}", _x);
 
-        let some_var: String = mad_skills!(1 + 2);
+        let some_var: String = mad_skills!(u8);
 
         dbg!(some_var);
 
