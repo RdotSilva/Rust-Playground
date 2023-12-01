@@ -46,6 +46,18 @@ mod tests {
         };
     }
 
+    macro_rules! my_vec {
+        ( $($x: expr),+ ) => {
+          {
+            let mut temp_vec = Vec::new();
+            $(
+              temp_vec.push($x);
+            )+
+            temp_vec
+          }
+        }
+      }
+
     #[test]
     fn tests_declarative_macro() {
         let mut _x: Vec<i32> = vec![];
