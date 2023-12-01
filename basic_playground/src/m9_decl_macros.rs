@@ -61,14 +61,10 @@ mod tests {
     #[test]
     fn tests_declarative_macro() {
         let mut _x: Vec<i32> = vec![];
-        dbg!(_x);
-
-        let formatted: String = format!("Hello with vec {:?}", _x);
+        let y: Vec<i32> = my_vec!(1);
+        dbg!(y);
 
         let some_var: String = mad_skills!(u8);
-
         dbg!(some_var);
-
-        dbg!(formatted);
     }
 }
