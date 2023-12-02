@@ -1,3 +1,4 @@
+mod m10_proc_macros;
 mod m1_enums;
 mod m2_structs;
 mod m3_traits;
