@@ -120,6 +120,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "my_proc_macro"
+version = "0.1.0"
+
+[[package]]
 name = "num_cpus"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -198,6 +202,7 @@ dependencies = [
 name = "rust-playground"
 version = "0.1.0"
 dependencies = [
+ "my_proc_macro",
  "tokio",
 ]
 
