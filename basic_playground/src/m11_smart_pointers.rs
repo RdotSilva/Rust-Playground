@@ -50,5 +50,28 @@ mod tests {
             description: String,
             house: Weak<House>,
         }
+
+        let house_1 = Rc::new(House {
+            address_number: 123,
+            street: "coding avenue".to_string(),
+            furniture: RefCell::new(vec![]),
+        });
+
+        let table = Rc::new(Furniture {
+            id: "table1".to_string(),
+            description: "kitchen table".to_string(),
+            house: Rc::downgrade(&house_1),
+        });
+
+        let desk = Rc::new(Furniture {
+            id: "desk1".to_string(),
+            description: "office desk".to_string(),
+            house: Rc::downgrade(&house_1),
+        });
+
+        house_1.furniture.borrow_mut().push(Rc::clone(&table));
+        house_1.furniture.borrow_mut().push(Rc::clone(&desk));
+
+        dbg!(house_1);
     }
 }
