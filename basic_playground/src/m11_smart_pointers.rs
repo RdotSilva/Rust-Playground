@@ -36,5 +36,19 @@ mod tests {
 
         dbg!(x.borrow());
         dbg!(1.borrow());
+
+        #[derive(Debug, Clone)]
+        struct House {
+            address_number: u16,
+            street: String,
+            furniture: RefCell<Vec<Rc<Furniture>>>,
+        }
+
+        #[derive(Debug, Clone)]
+        struct Furniture {
+            id: String,
+            description: String,
+            house: Weak<House>,
+        }
     }
 }
