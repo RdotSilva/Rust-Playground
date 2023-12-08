@@ -3,6 +3,8 @@ mod tests {
     use std::cell::RefCell;
     use std::rc::{Rc, Weak};
 
+    use ethers::core::rand::distributions::uniform::SampleBorrow;
+
     #[test]
     #[allow(dead_code, unused_variables)]
     fn tests_box_smart_pointer() {
@@ -29,5 +31,10 @@ mod tests {
         let x: Rc<RefCell<i32>> = Rc::new(RefCell::new(50));
         let y: Rc<RefCell<i32>> = Rc::clone(&x);
         let z: Rc<RefCell<i32>> = Rc::clone(&x);
+
+        *x.borrow_mut() = 70;
+
+        dbg!(x.borrow());
+        dbg!(1.borrow());
     }
 }
